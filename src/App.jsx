@@ -4,7 +4,6 @@ import MainText from './MainText';
 function App() {
 	return (
 		<>
-			<p>test</p>
 			<ToggleTheme />
 			<MainText />
 		</>

@@ -1,3 +1,4 @@
+import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { Button } from '@chakra-ui/react';
 import { useColorMode } from '@chakra-ui/react';
 
@@ -6,7 +7,7 @@ function ToggleTheme() {
 	return (
 		<header>
 			<Button onClick={toggleColorMode}>
-				Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
+				{colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
 			</Button>
 		</header>
 	);
