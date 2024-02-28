@@ -1,7 +1,7 @@
 import './App.css';
-import ToggleTheme from './ToggleTheme';
-import MainText from './MainText';
-import SearchBar from './SearchBar';
+import ToggleTheme from './components/ToggleTheme';
+import MainText from './components/MainText';
+import SearchBar from './components/SearchBar';
 import { Box } from '@chakra-ui/react';
 function App() {
 	return (
