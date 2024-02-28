@@ -9,6 +9,7 @@ function MainText() {
 			align="center"
 			bgGradient="linear(to-br, #7928CA, #FF0080)"
 			bgClip="text"
+			fontWeight="extrabold"
 		>
 			From Favorites to Hidden Gems<br></br> We&apos;ve Got You Covered.
 		</Text>

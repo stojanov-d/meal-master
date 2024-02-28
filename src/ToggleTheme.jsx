@@ -6,7 +6,7 @@ function ToggleTheme() {
 	const { colorMode, toggleColorMode } = useColorMode();
 	return (
 		<header>
-			<Button onClick={toggleColorMode}>
+			<Button onClick={toggleColorMode} variant="ghost">
 				{colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
 			</Button>
 		</header>
