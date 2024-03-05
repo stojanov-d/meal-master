@@ -1,8 +1,6 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
-import { Flex } from '@chakra-ui/react';
-
+import { Flex, Button } from '@chakra-ui/react';
 const containerStyle = {
 	width: '1000px',
 	height: '700px',
@@ -22,14 +20,32 @@ function MainMap() {
 	const [map, setMap] = useState(null);
 
 	const onLoad = (map) => {
-		// const bounds = new window.google.maps.LatLngBounds(center);
-		// map.fitBounds(bounds);
 		map.setZoom(15);
 		setMap(map);
 	};
 
 	const onUnmount = () => {
 		setMap(null);
+	};
+
+	const getCurrentLocation = () => {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(
+				(position) => {
+					const { latitude, longitude } = position.coords;
+					const currentPosition = {
+						lat: latitude,
+						lng: longitude,
+					};
+					map.panTo(currentPosition);
+				},
+				(error) => {
+					console.error('Error getting current location:', error);
+				}
+			);
+		} else {
+			console.error('Geolocation is not supported by this browser.');
+		}
 	};
 
 	return isLoaded ? (
@@ -41,11 +57,18 @@ function MainMap() {
 				onUnmount={onUnmount}
 			>
 				{/* Child components, such as markers, info windows, etc. */}
-				<></>
+				<Button
+					position="absolute"
+					top="1rem"
+					right="1rem"
+					onClick={getCurrentLocation}
+				>
+					Get Current Location
+				</Button>
 			</GoogleMap>
 		</Flex>
 	) : (
-		<></>
+		<h3>Error loading map...</h3>
 	);
 }
 
