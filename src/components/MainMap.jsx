@@ -11,6 +11,9 @@ const center = {
 	lng: 21.4254,
 };
 
+// It loads slower using this map style. Default map loads faster. Maybe change in future.
+const mapID = import.meta.env.VITE_GOOGLE_MAPS_ID;
+
 function MainMap() {
 	const { isLoaded } = useJsApiLoader({
 		id: 'google-map-script',
@@ -55,6 +58,10 @@ function MainMap() {
 				center={center}
 				onLoad={onLoad}
 				onUnmount={onUnmount}
+				//Loads slower using this map style. Default map loads faster. Maybe change in future.
+				options={{
+					mapId: mapID,
+				}}
 			>
 				{/* Child components, such as markers, info windows, etc. */}
 				<Button
